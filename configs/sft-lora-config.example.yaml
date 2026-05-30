@@ -1,0 +1,53 @@
+# 通用 SFT + LoRA 配置示例
+# 该文件用于学习参数含义，不绑定具体训练框架。
+
+model:
+  name_or_path: Qwen/Qwen2.5-0.5B-Instruct
+  trust_remote_code: true
+  chat_template: auto
+
+data:
+  train_file: data/dataset-v1.jsonl
+  eval_file: data/evaluation-set.csv
+  format: messages
+  train_split: train
+  eval_split: eval
+
+method:
+  type: sft_lora
+  full_finetune: false
+  quantization: optional
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+
+training:
+  max_seq_length: 1024
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 8
+  learning_rate: 0.0002
+  num_train_epochs: 2
+  warmup_ratio: 0.03
+  weight_decay: 0.0
+  logging_steps: 10
+  save_steps: 100
+  eval_steps: 100
+  seed: 42
+
+outputs:
+  output_dir: outputs/sft-lora-run
+  save_adapter: true
+  save_merged_model: false
+
+notes:
+  - 初学者先跑通流程，再扩大模型和数据。
+  - 如果显存不足，优先降低 max_seq_length 和 batch size。
+  - 如果输出过拟合，减少 epoch、降低 LoRA rank 或增加高质量数据。
+  - 每次实验只改变一个主要变量，方便分析原因。

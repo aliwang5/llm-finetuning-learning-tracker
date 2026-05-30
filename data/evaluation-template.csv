@@ -1,0 +1,6 @@
+id,category,question,expected_criteria,base_model_answer,fine_tuned_answer,score_accuracy,score_completeness,score_format,score_safety,notes
+1,definition,什么是监督微调？,应说明使用标注样本训练模型输出目标行为,,,,,,
+2,comparison,LoRA 和 QLoRA 有什么区别？,应比较 adapter 训练与量化加载基座模型,,,,,,
+3,dataset,如何判断一条微调样本质量高？,应包含目标明确、格式一致、答案准确、无矛盾,,,,,,
+4,training,learning rate 太高可能导致什么问题？,应提到训练不稳定、loss 震荡、模型退化,,,,,,
+5,evaluation,为什么不能只看训练 loss？,应提到过拟合、评测集和真实输出质量,,,,,,

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LLM Fine-Tuning Learning Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">LLM Fine-Tuning Bootcamp</p>
+        <h1>大模型微调学习打卡系统</h1>
+      </div>
+      <div class="top-actions">
+        <button id="exportBtn" type="button">导出进度</button>
+        <button id="resetBtn" type="button" class="ghost">重置</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="sidebar">
+        <section class="panel progress-panel">
+          <h2>学习进度</h2>
+          <div class="progress-ring" aria-label="总体完成率">
+            <span id="progressText">0%</span>
+          </div>
+          <p id="progressSummary">完成任意任务后，这里会显示你的整体进度。</p>
+        </section>
+
+        <section class="panel">
+          <h2>模型顾问设置</h2>
+          <label>
+            API Base URL
+            <input id="apiBase" type="url" placeholder="https://api.openai.com" />
+          </label>
+          <label>
+            API Key
+            <input id="apiKey" type="password" placeholder="sk-..." autocomplete="off" />
+          </label>
+          <label>
+            Model
+            <input id="modelName" type="text" placeholder="gpt-4.1-mini 或你的模型名" />
+          </label>
+          <label>
+            Temperature
+            <input id="temperature" type="number" min="0" max="2" step="0.1" />
+          </label>
+          <button id="saveSettingsBtn" type="button">保存设置</button>
+          <p class="hint">兼容 OpenAI 风格的 <code>/v1/chat/completions</code> 接口。API Key 仅保存在本机浏览器。</p>
+        </section>
+
+        <section class="panel">
+          <h2>今日建议</h2>
+          <p id="dailyAdvice">完成当天任务后，可以让模型根据你的进度给出下一步建议。</p>
+          <button id="askCoachBtn" type="button">生成学习反馈</button>
+        </section>
+      </aside>
+
+      <section class="content">
+        <nav class="tabs" aria-label="学习阶段">
+          <button class="tab active" data-phase="all" type="button">全部</button>
+          <button class="tab" data-phase="foundation" type="button">基础</button>
+          <button class="tab" data-phase="data" type="button">数据</button>
+          <button class="tab" data-phase="training" type="button">训练</button>
+          <button class="tab" data-phase="evaluation" type="button">评估</button>
+          <button class="tab" data-phase="project" type="button">项目</button>
+        </nav>
+
+        <section id="dayList" class="day-list" aria-live="polite"></section>
+      </section>
+
+      <aside class="resource-column">
+        <section class="panel">
+          <h2>核心资料</h2>
+          <div id="resourceList" class="resource-list"></div>
+        </section>
+
+        <section class="panel">
+          <h2>学习日志</h2>
+          <textarea id="reflectionInput" rows="8" placeholder="记录今天遇到的问题、完成的实验、下一步计划。"></textarea>
+          <button id="saveReflectionBtn" type="button">保存日志</button>
+        </section>
+      </aside>
+    </main>
+
+    <dialog id="coachDialog">
+      <form method="dialog">
+        <div class="dialog-head">
+          <h2>模型学习反馈</h2>
+          <button value="close" aria-label="关闭" type="submit">×</button>
+        </div>
+        <pre id="coachOutput">正在生成...</pre>
+      </form>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
