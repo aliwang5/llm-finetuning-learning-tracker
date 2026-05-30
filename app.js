@@ -38,6 +38,128 @@ const resources = [
   }
 ];
 
+const trainingDomains = [
+  {
+    id: "course-tutor",
+    name: "课程助教",
+    task: "把课程材料转成问答、概念解释、作业提示、复习计划生成任务。",
+    datasets: [
+      ["OpenAssistant/oasst1", "https://huggingface.co/datasets/OpenAssistant/oasst1"],
+      ["databricks-dolly-15k", "https://huggingface.co/datasets/databricks/databricks-dolly-15k"],
+      ["FLAN collection", "https://huggingface.co/datasets/Muennighoff/flan"]
+    ],
+    rules: [
+      "把长文材料拆成单概念、单知识点、单任务样本。",
+      "答案中区分直接结论、推理过程和引用来源。",
+      "不要把完整答案直接用于作业代写；保留提示式、引导式回答样本。",
+      "保留一定比例的“我不知道/材料未覆盖”样本，降低幻觉。"
+    ],
+    schema: "messages: system=课程助教规则, user=学生问题, assistant=解释或学习建议"
+  },
+  {
+    id: "customer-support",
+    name: "客服问答",
+    task: "训练模型按企业口径回答产品、售后、退款、故障排查和升级路径。",
+    datasets: [
+      ["Bitext customer support dataset", "https://huggingface.co/datasets/bitext/Bitext-customer-support-llm-chatbot-training-dataset"],
+      ["Customer Support on Twitter", "https://huggingface.co/datasets/consumer-finance-complaints/customer-support-tweets"],
+      ["Ubuntu Dialogue Corpus", "https://huggingface.co/datasets/sedthh/ubuntu_dialogue_qa"]
+    ],
+    rules: [
+      "清除真实姓名、邮箱、电话、订单号、地址等个人信息。",
+      "把答案改写成统一品牌语气，避免多个客服风格混杂。",
+      "每条样本标注意图，例如退款、物流、账号、故障、升级。",
+      "高风险场景加入转人工规则，不让模型自行承诺退款或赔付。"
+    ],
+    schema: "messages: system=客服政策, user=客户问题, assistant=合规客服回复"
+  },
+  {
+    id: "paper-assistant",
+    name: "论文阅读助手",
+    task: "训练模型输出论文摘要、贡献、方法、局限、复现建议和相关工作比较。",
+    datasets: [
+      ["arXiv dataset", "https://huggingface.co/datasets/ccdv/arxiv-summarization"],
+      ["Scientific Papers", "https://huggingface.co/datasets/scientific_papers"],
+      ["S2ORC", "https://huggingface.co/datasets/allenai/s2orc"]
+    ],
+    rules: [
+      "按标题、摘要、方法、实验、结论字段切分，不要把整篇论文塞进单样本。",
+      "摘要任务和批判性分析任务分开建样本。",
+      "要求模型标注不确定性，避免编造实验结果。",
+      "长论文优先用 RAG 检索上下文，再用微调统一输出格式。"
+    ],
+    schema: "instruction/input/output 或 messages: user=论文片段+任务, assistant=结构化分析"
+  },
+  {
+    id: "code-assistant",
+    name: "代码解释助手",
+    task: "训练模型解释代码、定位报错、生成测试、给出重构建议。",
+    datasets: [
+      ["CodeSearchNet", "https://huggingface.co/datasets/code_search_net"],
+      ["MBPP", "https://huggingface.co/datasets/google-research-datasets/mbpp"],
+      ["HumanEval", "https://huggingface.co/datasets/openai/openai_humaneval"]
+    ],
+    rules: [
+      "保留语言、文件名、函数签名、错误栈等上下文。",
+      "把解释、修复、测试生成分成不同任务类型。",
+      "不要混入不可运行或许可证不清的代码。",
+      "评测时必须包含可执行测试，而不只看自然语言回答。"
+    ],
+    schema: "messages: system=代码助手约束, user=代码/报错/需求, assistant=解释+修复步骤"
+  },
+  {
+    id: "medical-qa",
+    name: "医学问答",
+    task: "训练模型做医学知识解释、患者教育、文献摘要，但不替代医生诊断。",
+    datasets: [
+      ["MedQA", "https://huggingface.co/datasets/bigbio/med_qa"],
+      ["PubMedQA", "https://huggingface.co/datasets/qiaojin/PubMedQA"],
+      ["MedMCQA", "https://huggingface.co/datasets/openlifescienceai/medmcqa"]
+    ],
+    rules: [
+      "必须加入免责声明和就医建议边界。",
+      "删除患者个人身份信息。",
+      "把考试题、科普问答、临床建议分开，不要混成同一输出风格。",
+      "高风险症状、用药、剂量问题必须建议咨询专业医生。"
+    ],
+    schema: "messages: system=医学科普边界, user=医学问题, assistant=科普解释+风险提醒"
+  },
+  {
+    id: "legal-qa",
+    name: "法律问答",
+    task: "训练模型做法律概念解释、法规检索辅助、合同条款风险提示。",
+    datasets: [
+      ["LexGLUE", "https://huggingface.co/datasets/coastalcph/lex_glue"],
+      ["CUAD", "https://huggingface.co/datasets/theatticusproject/cuad-qa"],
+      ["Pile of Law", "https://huggingface.co/datasets/pile-of-law/pile-of-law"]
+    ],
+    rules: [
+      "明确司法辖区和时间范围，避免跨地区法律混用。",
+      "加入非法律意见声明，复杂问题建议咨询律师。",
+      "法规条文、案例摘要、合同审查应分成不同任务类型。",
+      "训练样本保留引用来源字段，方便后续评估事实一致性。"
+    ],
+    schema: "messages: system=法律助手边界, user=法律问题/条款, assistant=解释+风险点+建议"
+  },
+  {
+    id: "finance-analysis",
+    name: "金融分析",
+    task: "训练模型做财报摘要、指标解释、风险提示和研究报告结构化输出。",
+    datasets: [
+      ["FinGPT datasets", "https://huggingface.co/FinGPT"],
+      ["Financial PhraseBank", "https://huggingface.co/datasets/financial_phrasebank"],
+      ["FiQA", "https://huggingface.co/datasets/pauri32/fiqa-2018"]
+    ],
+    rules: [
+      "不要训练模型给出确定性买卖建议。",
+      "保留时间、市场、币种、公司代码等上下文。",
+      "把情绪分类、财报摘要、风险提示、问答任务分开。",
+      "涉及投资建议时输出风险披露和不确定性说明。"
+    ],
+    schema: "messages: system=金融分析边界, user=财报/新闻/问题, assistant=结构化分析+风险提示"
+  }
+];
+
 const plan = [
   {
     day: 1,
@@ -385,6 +507,7 @@ const taskResources = {
 const defaultState = {
   completed: {},
   reflections: {},
+  selectedDomain: "course-tutor",
   settings: {
     apiBase: "https://api.openai.com",
     apiKey: "",
@@ -508,6 +631,29 @@ function renderResources() {
       </div>
     `)
     .join("");
+}
+
+function renderDomains() {
+  const select = document.querySelector("#domainSelect");
+  select.innerHTML = trainingDomains
+    .map((domain) => `<option value="${domain.id}">${domain.name}</option>`)
+    .join("");
+  select.value = state.selectedDomain || trainingDomains[0].id;
+
+  const domain = trainingDomains.find((item) => item.id === select.value) || trainingDomains[0];
+  document.querySelector("#domainDetails").innerHTML = `
+    <p class="domain-task">${domain.task}</p>
+    <h3>可用数据集</h3>
+    <div class="domain-links">
+      ${domain.datasets.map(([name, url]) => `<a href="${url}" target="_blank" rel="noreferrer">${name}</a>`).join("")}
+    </div>
+    <h3>处理规则</h3>
+    <ul>
+      ${domain.rules.map((rule) => `<li>${rule}</li>`).join("")}
+    </ul>
+    <h3>推荐格式</h3>
+    <p class="schema">${domain.schema}</p>
+  `;
 }
 
 function renderSettings() {
@@ -642,12 +788,18 @@ function bindEvents() {
   document.querySelector("#askCoachBtn").addEventListener("click", askCoach);
   document.querySelector("#exportBtn").addEventListener("click", exportProgress);
   document.querySelector("#resetBtn").addEventListener("click", resetProgress);
+  document.querySelector("#domainSelect").addEventListener("change", (event) => {
+    state.selectedDomain = event.target.value;
+    saveState();
+    renderDomains();
+  });
 }
 
 function renderAll() {
   renderPlan();
   renderProgress();
   renderResources();
+  renderDomains();
   renderSettings();
 }
 

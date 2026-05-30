@@ -294,6 +294,40 @@ textarea {
   gap: 0.7rem;
 }
 
+.domain-details h3 {
+  margin: 0.9rem 0 0.45rem;
+  font-size: 0.9rem;
+}
+
+.domain-task,
+.schema {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 0.9rem;
+}
+
+.domain-links {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.domain-links a {
+  display: block;
+  color: var(--brand-2);
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+.domain-details ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 0.9rem;
+}
+
 .resource {
   border-left: 3px solid var(--brand-2);
   padding-left: 0.7rem;
