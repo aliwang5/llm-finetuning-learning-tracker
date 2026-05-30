@@ -263,6 +263,32 @@ textarea {
   line-height: 1.55;
 }
 
+.task-links {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  margin-top: 0.45rem;
+}
+
+.task-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.65rem;
+  padding: 0.18rem 0.5rem;
+  border: 1px solid #c9d8e8;
+  border-radius: 999px;
+  color: var(--brand-2);
+  background: #f4f8fc;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.task-links a:hover {
+  border-color: var(--brand-2);
+  background: #eef6ff;
+}
+
 .resource-list {
   display: grid;
   gap: 0.7rem;

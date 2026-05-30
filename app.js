@@ -209,6 +209,179 @@ const plan = [
   }
 ];
 
+const taskResources = {
+  "1-0": [
+    ["Hugging Face Learn", "https://huggingface.co/learn"],
+    ["Transformers LLM tutorial", "https://huggingface.co/docs/transformers/llm_tutorial"]
+  ],
+  "1-1": [
+    ["LoRA paper", "https://arxiv.org/abs/2106.09685"],
+    ["QLoRA paper", "https://arxiv.org/abs/2305.14314"]
+  ],
+  "1-2": [
+    ["Transformers glossary", "https://huggingface.co/docs/transformers/glossary"],
+    ["Chat templates", "https://huggingface.co/docs/transformers/chat_templating"]
+  ],
+  "2-0": [
+    ["Transformers docs", "https://huggingface.co/docs/transformers"],
+    ["Datasets docs", "https://huggingface.co/docs/datasets"]
+  ],
+  "2-1": [
+    ["PEFT docs", "https://huggingface.co/docs/peft"],
+    ["PEFT LoRA guide", "https://huggingface.co/docs/peft/developer_guides/lora"]
+  ],
+  "2-2": [
+    ["TRL SFTTrainer", "https://huggingface.co/docs/trl/sft_trainer"],
+    ["TRL examples", "https://github.com/huggingface/trl/tree/main/examples"]
+  ],
+  "3-0": [
+    ["Hugging Face datasets", "https://huggingface.co/datasets"],
+    ["Databricks Dolly 15k", "https://huggingface.co/datasets/databricks/databricks-dolly-15k"]
+  ],
+  "3-1": [
+    ["OpenAI prompt engineering", "https://platform.openai.com/docs/guides/prompt-engineering"],
+    ["Chat templates", "https://huggingface.co/docs/transformers/chat_templating"]
+  ],
+  "3-2": [
+    ["Chat templates", "https://huggingface.co/docs/transformers/chat_templating"],
+    ["TRL dataset formats", "https://huggingface.co/docs/trl/sft_trainer#expected-dataset-type"]
+  ],
+  "4-0": [
+    ["Dolly dataset", "https://huggingface.co/datasets/databricks/databricks-dolly-15k"],
+    ["OpenAssistant dataset", "https://huggingface.co/datasets/OpenAssistant/oasst1"]
+  ],
+  "4-1": [
+    ["UltraChat dataset", "https://huggingface.co/datasets/HuggingFaceH4/ultrachat_200k"],
+    ["Anthropic HH-RLHF", "https://huggingface.co/datasets/Anthropic/hh-rlhf"]
+  ],
+  "4-2": [
+    ["Chat templating", "https://huggingface.co/docs/transformers/chat_templating"],
+    ["OpenAI API text generation", "https://platform.openai.com/docs/guides/text-generation"]
+  ],
+  "5-0": [
+    ["Datasets processing", "https://huggingface.co/docs/datasets/process"],
+    ["Datasets loading", "https://huggingface.co/docs/datasets/loading"]
+  ],
+  "5-1": [
+    ["Datasets map/filter", "https://huggingface.co/docs/datasets/process"],
+    ["Hugging Face dataset viewer", "https://huggingface.co/docs/hub/datasets-viewer"]
+  ],
+  "5-2": [
+    ["Datasets train/test split", "https://huggingface.co/docs/datasets/process#split"],
+    ["Evaluate docs", "https://huggingface.co/docs/evaluate"]
+  ],
+  "6-0": [
+    ["Qwen models", "https://huggingface.co/Qwen"],
+    ["Google Gemma models", "https://huggingface.co/google"],
+    ["Microsoft Phi models", "https://huggingface.co/microsoft"]
+  ],
+  "6-1": [
+    ["PEFT LoRA guide", "https://huggingface.co/docs/peft/developer_guides/lora"],
+    ["bitsandbytes quantization", "https://huggingface.co/docs/transformers/quantization/bitsandbytes"]
+  ],
+  "6-2": [
+    ["Transformers Trainer", "https://huggingface.co/docs/transformers/trainer"],
+    ["TRL SFTTrainer", "https://huggingface.co/docs/trl/sft_trainer"]
+  ],
+  "7-0": [
+    ["Transformers training arguments", "https://huggingface.co/docs/transformers/main_classes/trainer#transformers.TrainingArguments"],
+    ["PEFT LoRA config", "https://huggingface.co/docs/peft/package_reference/lora"]
+  ],
+  "7-1": [
+    ["TRL SFTTrainer", "https://huggingface.co/docs/trl/sft_trainer"],
+    ["Weights & Biases experiments", "https://docs.wandb.ai/guides/track/"]
+  ],
+  "7-2": [
+    ["Evaluate docs", "https://huggingface.co/docs/evaluate"],
+    ["OpenAI evals guide", "https://platform.openai.com/docs/guides/evals"]
+  ],
+  "8-0": [
+    ["OpenAI evals guide", "https://platform.openai.com/docs/guides/evals"],
+    ["Hugging Face Evaluate", "https://huggingface.co/docs/evaluate"]
+  ],
+  "8-1": [
+    ["OpenAI evals design", "https://platform.openai.com/docs/guides/evals"],
+    ["HELM benchmark", "https://crfm.stanford.edu/helm/latest/"]
+  ],
+  "8-2": [
+    ["TRL SFTTrainer evaluation", "https://huggingface.co/docs/trl/sft_trainer"],
+    ["lm-evaluation-harness", "https://github.com/EleutherAI/lm-evaluation-harness"]
+  ],
+  "9-0": [
+    ["OpenAI evals guide", "https://platform.openai.com/docs/guides/evals"],
+    ["Model evaluation overview", "https://huggingface.co/docs/evaluate/index"]
+  ],
+  "9-1": [
+    ["Datasets processing", "https://huggingface.co/docs/datasets/process"],
+    ["Data-centric AI", "https://dcai.csail.mit.edu/"]
+  ],
+  "9-2": [
+    ["Datasets versioning on Hub", "https://huggingface.co/docs/hub/datasets-adding"],
+    ["Git LFS", "https://git-lfs.com/"]
+  ],
+  "10-0": [
+    ["TRL SFTTrainer", "https://huggingface.co/docs/trl/sft_trainer"],
+    ["Axolotl docs", "https://docs.axolotl.ai/"]
+  ],
+  "10-1": [
+    ["Weights & Biases compare runs", "https://docs.wandb.ai/guides/runs/compare-runs"],
+    ["Evaluate docs", "https://huggingface.co/docs/evaluate"]
+  ],
+  "10-2": [
+    ["PEFT checkpoint format", "https://huggingface.co/docs/peft/developer_guides/checkpoint"],
+    ["Hugging Face Hub upload", "https://huggingface.co/docs/hub/models-uploading"]
+  ],
+  "11-0": [
+    ["GitHub README guide", "https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes"],
+    ["Model cards", "https://huggingface.co/docs/hub/model-cards"]
+  ],
+  "11-1": [
+    ["YAML basics", "https://yaml.org/spec/1.2.2/"],
+    ["Axolotl config docs", "https://docs.axolotl.ai/docs/config.html"]
+  ],
+  "11-2": [
+    ["Experiment tracking", "https://docs.wandb.ai/guides/track/"],
+    ["Hugging Face model cards", "https://huggingface.co/docs/hub/model-cards"]
+  ],
+  "12-0": [
+    ["DPO paper", "https://arxiv.org/abs/2305.18290"],
+    ["TRL DPOTrainer", "https://huggingface.co/docs/trl/dpo_trainer"]
+  ],
+  "12-1": [
+    ["RAG overview", "https://huggingface.co/docs/transformers/model_doc/rag"],
+    ["OpenAI retrieval guide", "https://platform.openai.com/docs/guides/retrieval"]
+  ],
+  "12-2": [
+    ["PEFT docs", "https://huggingface.co/docs/peft"],
+    ["TRL docs", "https://huggingface.co/docs/trl"]
+  ],
+  "13-0": [
+    ["Datasets cards", "https://huggingface.co/docs/hub/datasets-cards"],
+    ["Dataset upload guide", "https://huggingface.co/docs/hub/datasets-adding"]
+  ],
+  "13-1": [
+    ["TrainingArguments", "https://huggingface.co/docs/transformers/main_classes/trainer#transformers.TrainingArguments"],
+    ["PEFT LoRA config", "https://huggingface.co/docs/peft/package_reference/lora"]
+  ],
+  "13-2": [
+    ["Evaluate docs", "https://huggingface.co/docs/evaluate"],
+    ["OpenAI evals guide", "https://platform.openai.com/docs/guides/evals"]
+  ],
+  "14-0": [
+    ["Reproducibility checklist", "https://paperswithcode.com/rc2020"],
+    ["Hugging Face Hub repositories", "https://huggingface.co/docs/hub/repositories-getting-started"]
+  ],
+  "14-1": [
+    ["GitHub releases", "https://docs.github.com/repositories/releasing-projects-on-github/about-releases"],
+    ["GitHub Pages", "https://docs.github.com/pages"]
+  ],
+  "14-2": [
+    ["vLLM docs", "https://docs.vllm.ai/"],
+    ["TensorRT-LLM docs", "https://nvidia.github.io/TensorRT-LLM/"],
+    ["TRL docs", "https://huggingface.co/docs/trl"]
+  ]
+};
+
 const defaultState = {
   completed: {},
   reflections: {},
@@ -277,6 +450,7 @@ function renderPlan() {
     const taskList = article.querySelector(".task-list");
     day.tasks.forEach(([title, detail], index) => {
       const key = taskKey(day.day, index);
+      const links = getTaskResources(day.day, index);
       const label = document.createElement("label");
       label.className = "task";
       label.innerHTML = `
@@ -284,6 +458,9 @@ function renderPlan() {
         <span>
           <strong>${title}</strong>
           <p>${detail}</p>
+          <span class="task-links">
+            ${links.map(([name, url]) => `<a href="${url}" target="_blank" rel="noreferrer">${name}</a>`).join("")}
+          </span>
         </span>
       `;
       label.querySelector("input").addEventListener("change", (event) => {
@@ -297,6 +474,10 @@ function renderPlan() {
 
     dayList.appendChild(article);
   });
+}
+
+function getTaskResources(day, index) {
+  return taskResources[`${day}-${index}`] || [];
 }
 
 function phaseName(phase) {
