@@ -26,7 +26,7 @@
 数据集：
 
 - Bitext customer support dataset: https://huggingface.co/datasets/bitext/Bitext-customer-support-llm-chatbot-training-dataset
-- Customer support tweets: https://huggingface.co/datasets/consumer-finance-complaints/customer-support-tweets
+- Customer Support Tweets: https://huggingface.co/datasets/MohammadOthman/mo-customer-support-tweets-945k
 - Ubuntu Dialogue QA: https://huggingface.co/datasets/sedthh/ubuntu_dialogue_qa
 
 处理规则：
@@ -43,8 +43,8 @@
 数据集：
 
 - arXiv summarization: https://huggingface.co/datasets/ccdv/arxiv-summarization
-- Scientific Papers: https://huggingface.co/datasets/scientific_papers
-- S2ORC: https://huggingface.co/datasets/allenai/s2orc
+- Scientific Papers: https://huggingface.co/datasets/armanc/scientific_papers
+- S2ORC CS Enriched: https://huggingface.co/datasets/AlgorithmicResearchGroup/s2orc-cs-enriched
 
 处理规则：
 
@@ -59,7 +59,7 @@
 
 数据集：
 
-- CodeSearchNet: https://huggingface.co/datasets/code_search_net
+- CodeSearchNet: https://huggingface.co/datasets/code-search-net/code_search_net
 - MBPP: https://huggingface.co/datasets/google-research-datasets/mbpp
 - HumanEval: https://huggingface.co/datasets/openai/openai_humaneval
 
@@ -111,7 +111,7 @@
 数据集：
 
 - FinGPT: https://huggingface.co/FinGPT
-- Financial PhraseBank: https://huggingface.co/datasets/financial_phrasebank
+- Financial PhraseBank: https://huggingface.co/datasets/takala/financial_phrasebank
 - FiQA: https://huggingface.co/datasets/pauri32/fiqa-2018
 
 处理规则：

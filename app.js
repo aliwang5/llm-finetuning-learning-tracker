@@ -62,7 +62,7 @@ const trainingDomains = [
     task: "训练模型按企业口径回答产品、售后、退款、故障排查和升级路径。",
     datasets: [
       ["Bitext customer support dataset", "https://huggingface.co/datasets/bitext/Bitext-customer-support-llm-chatbot-training-dataset"],
-      ["Customer Support on Twitter", "https://huggingface.co/datasets/consumer-finance-complaints/customer-support-tweets"],
+      ["Customer Support Tweets", "https://huggingface.co/datasets/MohammadOthman/mo-customer-support-tweets-945k"],
       ["Ubuntu Dialogue Corpus", "https://huggingface.co/datasets/sedthh/ubuntu_dialogue_qa"]
     ],
     rules: [
@@ -79,8 +79,8 @@ const trainingDomains = [
     task: "训练模型输出论文摘要、贡献、方法、局限、复现建议和相关工作比较。",
     datasets: [
       ["arXiv dataset", "https://huggingface.co/datasets/ccdv/arxiv-summarization"],
-      ["Scientific Papers", "https://huggingface.co/datasets/scientific_papers"],
-      ["S2ORC", "https://huggingface.co/datasets/allenai/s2orc"]
+      ["Scientific Papers", "https://huggingface.co/datasets/armanc/scientific_papers"],
+      ["S2ORC CS Enriched", "https://huggingface.co/datasets/AlgorithmicResearchGroup/s2orc-cs-enriched"]
     ],
     rules: [
       "按标题、摘要、方法、实验、结论字段切分，不要把整篇论文塞进单样本。",
@@ -95,7 +95,7 @@ const trainingDomains = [
     name: "代码解释助手",
     task: "训练模型解释代码、定位报错、生成测试、给出重构建议。",
     datasets: [
-      ["CodeSearchNet", "https://huggingface.co/datasets/code_search_net"],
+      ["CodeSearchNet", "https://huggingface.co/datasets/code-search-net/code_search_net"],
       ["MBPP", "https://huggingface.co/datasets/google-research-datasets/mbpp"],
       ["HumanEval", "https://huggingface.co/datasets/openai/openai_humaneval"]
     ],
@@ -147,7 +147,7 @@ const trainingDomains = [
     task: "训练模型做财报摘要、指标解释、风险提示和研究报告结构化输出。",
     datasets: [
       ["FinGPT datasets", "https://huggingface.co/FinGPT"],
-      ["Financial PhraseBank", "https://huggingface.co/datasets/financial_phrasebank"],
+      ["Financial PhraseBank", "https://huggingface.co/datasets/takala/financial_phrasebank"],
       ["FiQA", "https://huggingface.co/datasets/pauri32/fiqa-2018"]
     ],
     rules: [
@@ -411,7 +411,7 @@ const taskResources = {
   ],
   "7-1": [
     ["TRL SFTTrainer", "https://huggingface.co/docs/trl/sft_trainer"],
-    ["Weights & Biases experiments", "https://docs.wandb.ai/guides/track/"]
+    ["Transformers Trainer", "https://huggingface.co/docs/transformers/trainer"]
   ],
   "7-2": [
     ["Evaluate docs", "https://huggingface.co/docs/evaluate"],
@@ -446,7 +446,7 @@ const taskResources = {
     ["Axolotl docs", "https://docs.axolotl.ai/"]
   ],
   "10-1": [
-    ["Weights & Biases compare runs", "https://docs.wandb.ai/guides/runs/compare-runs"],
+    ["Evaluate docs", "https://huggingface.co/docs/evaluate"],
     ["Evaluate docs", "https://huggingface.co/docs/evaluate"]
   ],
   "10-2": [
@@ -459,10 +459,10 @@ const taskResources = {
   ],
   "11-1": [
     ["YAML basics", "https://yaml.org/spec/1.2.2/"],
-    ["Axolotl config docs", "https://docs.axolotl.ai/docs/config.html"]
+    ["Axolotl config reference", "https://docs.axolotl.ai/docs/config-reference.html"]
   ],
   "11-2": [
-    ["Experiment tracking", "https://docs.wandb.ai/guides/track/"],
+    ["MLflow tracking", "https://mlflow.org/docs/latest/ml/tracking/"],
     ["Hugging Face model cards", "https://huggingface.co/docs/hub/model-cards"]
   ],
   "12-0": [

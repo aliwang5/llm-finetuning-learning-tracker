@@ -4,7 +4,7 @@
 
 - Hugging Face Learn: https://huggingface.co/learn
 - NLP Course: https://huggingface.co/learn/nlp-course
-- DeepLearning.AI Generative AI Short Courses: https://www.deeplearning.ai/short-courses/
+- Hugging Face Learn: https://huggingface.co/learn
 
 ## 核心文档
 

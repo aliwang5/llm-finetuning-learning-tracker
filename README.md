@@ -119,6 +119,16 @@ https://api.openai.com
 - LoRA paper: https://arxiv.org/abs/2106.09685
 - QLoRA paper: https://arxiv.org/abs/2305.14314
 
+## 链接检查
+
+项目提供了外链检查脚本：
+
+```powershell
+PowerShell -ExecutionPolicy Bypass -File .\scripts\check-links.ps1
+```
+
+最近一次检查结果与替换记录见 `docs/link-audit.md`。
+
 ## 推荐学习方式
 
 每天保持三个产物：
